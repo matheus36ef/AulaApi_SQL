@@ -10,7 +10,30 @@ module.exports = {
      *
      * Example:
      */
-     await queryInterface.createTable('users', { id: Sequelize.INTEGER });
+     await queryInterface.createTable('users', { 
+       id: { //campo id dentro da tabela (users)
+         type: Sequelize.INTEGER, // tipo (sequelize é padrão) INTEIRO
+         primaryKey: true, // Fala que ele é unico, id++ sempre e TAMBEM que ele o principal na pesquisa
+         autoIncrement: true, //Fala que ele sempre vai estar se incrementando
+         allowNull: false, //Fala que ele não pode ser nullo
+       },
+       name: { //Campo name dentro da tabela (users)
+          type: Sequelize.STRING, // fala que o nome é do tipo CARACTER 
+          allowNull: false,//Fala que ele não pode ser nullo
+       },
+       email: { // Campo e-mail dentro da tabela (users)
+          type: Sequelize.STRING,// fala que o nome é do tipo CARACTER 
+          allowNull: false,//Fala que ele não pode ser nullo
+       },
+       created_at: { // Campo que informa a data que foi criada - (É altomatizado)
+          type: Sequelize.DATE, // fala que o nome é do tipo datas
+          allowNull: false,//Fala que ele não pode ser nullo 
+       },
+      updated_at: { //Ultima data de atualização - (É altomatizado)
+        type: Sequelize.DATE,// fala que o nome é do tipo datas
+        allowNull: false,//Fala que ele não pode ser nullo
+      }
+      });
   
   },
 
