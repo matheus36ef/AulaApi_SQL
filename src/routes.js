@@ -8,7 +8,7 @@ const routes = express.Router();
 
 
 routes.get('/users', UserControllers.index ); //Pesquisa
-routes.post('/users', UserControllers.store ); // Criar
+routes.post('/users', UserControllers.store); // Criar
 
 
 //-----------------------------------------------------

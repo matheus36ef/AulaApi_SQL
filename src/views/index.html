@@ -1,16 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>testeBanco</title>
-</head>
-<body>
-    <h1>Hello Word</h1>
-    <form action="/users" method = "POST">
-        <input type="text" name="name">
-        <input type="text" name="email">
-        <button type="submit" >Enviar</button>
-    </form>
-</body>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>testeBanco</title>
+	</head>
+	<body>
+		<h1>Hello Word</h1>
+		<form action="/users" method="POST">
+			<input type="text" name="name" />
+			<input type="email" name="email" />
+			<button type="submit">Enviar</button>
+		</form>
+		<script>
+			// cria uma referencia do formúlario
+			const form = document.querySelector("form");
+			
+			// quando formúlario for submetido (clicado no botão, apertar enter no input...)
+			// o evento "submit" acontece, você pode ouvir esse evento e passar uma função para fazer alguma coisa
+			form.addEventListener("submit", (event) => {
+				// faz com que o usuário não seja enviado para a página que está em action="/users"
+				// então NESSE CASO você não precisaria do atributo action e method no form
+				event.preventDefault();
+				
+				const data = {};
+				// é para pegar os valores dos inputs desse formúlario e não precisar pegar valor de cada um de forma manual
+				const formData = new FormData(form);
+				
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+				
+				// usado para você fazer requisições
+				fetch("http://localhost:3333/users", {
+					// transforma o objeto em JSON
+					body: JSON.stringify(data),
+					// metódo da requisção
+					method: "POST",
+				});
+			});
+		</script>
+	</body>
 </html>
