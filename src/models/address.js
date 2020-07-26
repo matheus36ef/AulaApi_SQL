@@ -12,6 +12,7 @@ class Address extends Model {
     }
 
     static associate(models) {
+        //  belongsTo -  um enderesso pertence a um usuario
         this.belongsTo(models.User, { foreignKey: 'userid', as: 'user' });
     }
 }

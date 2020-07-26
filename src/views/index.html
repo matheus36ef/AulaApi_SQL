@@ -8,14 +8,20 @@
 	<body>
 		<h1>Hello Word</h1>
 		<form>
-			<input type="text" name="name" />
-			<input type="text" name="email" />
-			<input type="number" name="senha" />
+			<h3>cep</h3>
+			<input type="text" name="zipcode" />
+			<h3>rua</h3>
+			<input type="text" name="street" />
+			<h3>numero</h3>
+			<input type="number" name="number" />
 			<button type="submit">Enviar</button>
 		</form>
 		<script>
 			// cria uma referencia do formúlario
 			const form = document.querySelector("form");
+
+
+			
 			
 			// quando formúlario for submetido (clicado no botão, apertar enter no input...)
 			// o evento "submit" acontece, você pode ouvir esse evento e passar uma função para fazer alguma coisa
@@ -42,8 +48,11 @@
                     },
 					// metódo da requisção
 					method: "POST",
-                });
+				});
+				console.log(data)
 			});
+			
 		</script>
+		
 	</body>
 </html>
