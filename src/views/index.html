@@ -7,9 +7,10 @@
 	</head>
 	<body>
 		<h1>Hello Word</h1>
-		<form action="/users" method="POST">
+		<form>
 			<input type="text" name="name" />
-			<input type="email" name="email" />
+			<input type="text" name="email" />
+			<input type="number" name="senha" />
 			<button type="submit">Enviar</button>
 		</form>
 		<script>
@@ -21,7 +22,8 @@
 			form.addEventListener("submit", (event) => {
 				// faz com que o usuário não seja enviado para a página que está em action="/users"
 				// então NESSE CASO você não precisaria do atributo action e method no form
-				event.preventDefault();
+				
+				// event.preventDefault();//Faz com que o usuario n seja redirecionado
 				
 				const data = {};
 				// é para pegar os valores dos inputs desse formúlario e não precisar pegar valor de cada um de forma manual
@@ -31,13 +33,16 @@
                     data[key] = value;
                 });
 				
-				// usado para você fazer requisições
-				fetch("http://localhost:3333/users", {
+				//usado para você fazer requisições
+				fetch("http://localhost:3333/users/1/addresses", {
 					// transforma o objeto em JSON
-					body: JSON.stringify(data),
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
 					// metódo da requisção
 					method: "POST",
-				});
+                });
 			});
 		</script>
 	</body>

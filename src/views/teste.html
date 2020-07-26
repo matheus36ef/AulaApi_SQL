@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello Word</h1>
+        <form action="/cadastro" method="POST">
+                <fieldset>
+                    <input type="text" name="name" />
+                    <input type="email" name="email" />
+                </fieldset>
+            <button type="submit">Enviar</button>
+        </form>
+        <script>
+            const ver = document.querySelector("form")
+
+            ver.addEventListener("submit", (event) => {
+				// faz com que o usuário não seja enviado para a página que está em action="/users"
+				// então NESSE CASO você não precisaria do atributo action e method no form
+				// event.preventDefault();//Faz com que o usuario n seja redirecionado
+				
+				// const data = {};
+				// // é para pegar os valores dos inputs desse formúlario e não precisar pegar valor de cada um de forma manual
+				// const formData = new FormData(form);
+				
+                // formData.forEach((value, key) => {
+                //     data[key] = value;
+                // });
+                const teste = {};
+				const teste = new formData(ver)
+				//usado para você fazer requisições
+				fetch("http://localhost:3333/cadastro", {
+					// transforma o objeto em JSON
+                    method: "POST",
+                    body: teste
+                    
+					// metódo da requisção
+					
+                });
+			});
+        </script>
+</body>
+</html>
